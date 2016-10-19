@@ -3,9 +3,22 @@ var bcrypt = require('bcrypt')
 
 var userSchema = new mongoose.Schema({
   local: { name: {
-      type: String
+      type: String,
+      required: true
     },
     email: {
+      type: String,
+      required: true
+    },
+    'contact no': {
+      type: Number,
+      required: true
+    },
+    'education level': {
+      type: String,
+      required: true
+    },
+    'total work experience': {
       type: String,
       required: true
     },
@@ -41,7 +54,5 @@ userSchema.post('save', function () {
 })
 
 var User = mongoose.model('User', userSchema)
-
-
 
 module.exports = User
