@@ -10,15 +10,15 @@ var userSchema = new mongoose.Schema({
       type: String,
       required: true
     },
-    'contact no': {
+    contact: {
       type: Number,
       required: true
     },
-    'education level': {
+    education: {
       type: String,
       required: true
     },
-    'total work experience': {
+    experience: {
       type: String,
       required: true
     },

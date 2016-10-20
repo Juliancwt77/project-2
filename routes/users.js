@@ -19,6 +19,7 @@ router.post('/profile', function (req, res) {
   User.create(req.body.user, function (err, newUser) {
     // res.send('profile')
     res.send(req.body)
+
   })
 })
 
