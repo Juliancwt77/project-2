@@ -4,6 +4,7 @@ var layout = require('express-ejs-layouts')
 var bodyParser = require('body-parser')
 var flash = require('connect-flash')
 var session = require('express-session')
+var passport = require('passport')
 
 var dotenv = require('dotenv')
 
@@ -28,6 +29,9 @@ app.use(session({
 }))
 app.use(flash())
 // app.use(session({}))
+
+app.use(passport.initialize())
+app.use(passport.session())
 
 // serve static files
 app.use(express.static(__dirname + '/public'))
