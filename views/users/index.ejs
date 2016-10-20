@@ -12,19 +12,28 @@
           <a class="navbar-brand">Job Hopper</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right">
+          <form class="navbar-form navbar-right" action="/users" method="post" >
             <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
+              <input type="text"
+              id="inputEmail" placeholder="Email" name="user[local][email]" class="form-control">
             </div>
             <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
+              <input type="password"
+              id="inputPassword" placeholder="Password"
+              name="user[local][password]"class="form-control">
             </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-            <a href="/users/signup" button type="submit" class="btn btn-primary" >Sign up for a new account</a></button>
+            <button type="submit" class="btn btn-success" value="log in">Sign in</button>
+
           </form>
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
+
+    <% if(message.length > 0) { %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% } %>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">

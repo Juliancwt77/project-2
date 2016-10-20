@@ -2,6 +2,9 @@ var express = require('express')
 var app = express()
 var layout = require('express-ejs-layouts')
 var bodyParser = require('body-parser')
+var flash = require('connect-flash')
+var session = require('express-session')
+
 var dotenv = require('dotenv')
 
 var mongoose = require('mongoose')
@@ -18,6 +21,13 @@ app.use(bodyParser.urlencoded({
 }))
 app.set('view engine', 'ejs')
 app.use(layout)
+app.use(session({
+  secret: process.env.EXPRESS_SECRET,
+  resave: true,
+  saveUninitialized: true
+}))
+app.use(flash())
+// app.use(session({}))
 
 // serve static files
 app.use(express.static(__dirname + '/public'))

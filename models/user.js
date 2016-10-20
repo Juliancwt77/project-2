@@ -53,6 +53,18 @@ userSchema.post('save', function () {
   // console.log('after the save, save successful')
 })
 
+userSchema.methods.authenticate = function (givenPassword, callback) {
+  console.log('given password is ' + givenPassword)
+  console.log('saved password is ' + this.local.password)
+  var hashedPassword = this.local.password
+
+  bcrypt.compare(givenPassword, hashedPassword, function (err, isMatch) {
+    callback(err, isMatch)
+  })
+}
+
+
+
 var User = mongoose.model('User', userSchema)
 
 module.exports = User
