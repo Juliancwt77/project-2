@@ -9,6 +9,8 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
+
+
     <title>Sign in Page</title>
 
     <!-- Bootstrap core CSS -->
@@ -32,6 +34,13 @@
   </head>
 
   <body>
+
+    <% if(message.length > 0) { %>
+  
+  <div class="alert alert-danger">
+    <%= message %>
+  </div>
+<% } %>
 
     <div class="container">
       <div class="col-sm-6 col-sm-offset-3">

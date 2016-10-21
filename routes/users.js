@@ -4,6 +4,15 @@ var passport = require('passport')
 var User = require('../models/user')
 var Admin = require('../models/admin')
 
+function authCheck (req, res, next) {
+  if (req.isAuthenticated()) {
+    req.flash('signupMessage', 'You have signed up')
+    return res.redirect('/users/profile')
+  } else {
+    return next()
+  }
+}
+
 // router.get('/profile', function (req, res) {
 //   User.find({}, function (err, allUsers) {
 //     console.log(allUsers)
@@ -13,12 +22,15 @@ var Admin = require('../models/admin')
 //   })
 // })
 
-router.get('/signup', function (req, res) {
-  res.render('users/signup')
-})
+// router.route('/signup')
+//       .get(authCheck, function (req, res) {
+//         res.render('users/signup')
+//         message: req.flash('signupMessage')
+//       })
+router.get('/signup', authCheck, function (req, res) {
+  res.render('users/signup', { message: req.flash('signupMessage')
 
-router.get('/profile', function (req, res) {
-  res.render('users/profile')
+  })
 })
 
 router.get('/adminlogin', function (req, res) {
@@ -32,10 +44,10 @@ router.get('/admin', function (req, res) {
 router.post('/signup',
   passport.authenticate('local-signup', {
     successRedirect: '/users/profile',
-    failureRedirect: '/test',
+    failureRedirect: '/users/signup',
     failureFlash: true
 
-   }))
+  }))
   // router.post('/profile', function (req, res) {
   //   User.create(req.body.user, function (err, newUser) {
   //     // res.send('profile')
@@ -82,8 +94,15 @@ router.post('/', function (req, res) {
 //   res.render('users/error')
 // })
 //
-// router.get('/profile', function (req, res) {
-//   res.render('users/profile')
-// })
+router.get('/profile', function (req, res) {
+
+  res.render('users/profile', { message: req.flash('signupMessage')
+  })
+})
+
+router.get('/logout', function (req, res) {
+  req.logout()
+  res.redirect('/users')
+})
 
 module.exports = router
