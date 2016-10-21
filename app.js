@@ -5,7 +5,8 @@ var bodyParser = require('body-parser')
 var flash = require('connect-flash')
 var session = require('express-session')
 var passport = require('passport')
-
+var morgan = require('morgan')
+var MongoStore = require('connect-mongo')(session)
 
 var dotenv = require('dotenv')
 
@@ -21,12 +22,20 @@ app.use(bodyParser.json()) // to parse ajax json req
 app.use(bodyParser.urlencoded({
   extended: true
 }))
+
+require('./config/passport')(passport)
+
+app.use(morgan('dev'))
 app.set('view engine', 'ejs')
 app.use(layout)
 app.use(session({
   secret: process.env.EXPRESS_SECRET,
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: true,
+  store: new MongoStore({
+    url: process.env.MONGO_URI,
+    autoReconnect: true
+  })
 }))
 app.use(flash())
 // app.use(session({}))

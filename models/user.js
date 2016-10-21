@@ -63,8 +63,6 @@ userSchema.methods.authenticate = function (givenPassword, callback) {
   })
 }
 
-
-
 var User = mongoose.model('User', userSchema)
 
 module.exports = User

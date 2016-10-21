@@ -29,22 +29,20 @@ router.get('/admin', function (req, res) {
   res.render('users/admin')
 })
 
-router.post('/', function (req, res) {
-  passport.authenticate('local-signup', function (err, user, info) {
-    res.send(req.body)
-    successRedirect: 'users/profile'
-    failureRedirect: 'users/signup'
+router.post('/signup',
+  passport.authenticate('local-signup', {
+    successRedirect: '/users/profile',
+    failureRedirect: '/test',
     failureFlash: true
-  })
-})
 
-// router.post('/profile', function (req, res) {
-//   User.create(req.body.user, function (err, newUser) {
-//     // res.send('profile')
-//     res.send(req.body)//
+   }))
+  // router.post('/profile', function (req, res) {
+  //   User.create(req.body.user, function (err, newUser) {
+  //     // res.send('profile')
+  //     res.send(req.body)//
 
 //   })
-// })
+  // })
 
 router.get('/', function (req, res) {
   res.render('users/index', {
@@ -60,7 +58,6 @@ router.post('/', function (req, res) {
 
     if (foundUser) {
       foundUser.authenticate(user.local.password, function (err, authenticated) {
-        console.log('test')
         if (err) res.send(err)
 
         if (authenticated) {
