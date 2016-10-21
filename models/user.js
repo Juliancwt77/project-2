@@ -53,7 +53,7 @@ userSchema.post('save', function () {
   // console.log('after the save, save successful')
 })
 
-userSchema.methods.authenticate = function (givenPassword, callback) {
+userSchema.methods.auth = function (givenPassword, callback) {
   console.log('given password is ' + givenPassword)
   console.log('saved password is ' + this.local.password)
   var hashedPassword = this.local.password

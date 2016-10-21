@@ -45,10 +45,20 @@
           <a class="navbar-brand" href="#">Job Hopper</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+
+
           <ul class="nav navbar-nav navbar-right">
-            <button role="button" class="btn btn-success" href="/logout">Logout</button>
 
+            <a class="btn btn-primary btn-lg" href="/users/logout" role="button">Logout</a>
+          </ul>
 
+          <ul>
+            <% if(message.length > 0) { %>
+
+          <div class="alert alert-success col-md-2" id="flash1">
+            <%= message %>
+          </div>
+          <% } %>
           </ul>
 
         </div>
@@ -65,12 +75,7 @@
 
         </div>
 
-        <% if(message.length > 0) { %>
 
-      <div class="alert alert-danger">
-        <%= message %>
-      </div>
-    <% } %>
 
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -79,6 +84,7 @@
 
 
           <h2> Profile </h2>
+
 
 
           <h2 class="sub-header">Section title</h2>

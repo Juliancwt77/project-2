@@ -62,41 +62,46 @@ router.get('/', function (req, res) {
   })
 })
 
-router.post('/', function (req, res) {
-  var user = req.body.user
+router.post('/', passport.authenticate('local-login', {
+  successRedirect: '/users/profile',
+  failureRedirect: '/users',
+  failureFlash: true
+}))
 
-  User.findOne({ 'local.email': user.local.email }, function (err, foundUser) {
-    if (err) res.send(err.message)
-
-    if (foundUser) {
-      foundUser.authenticate(user.local.password, function (err, authenticated) {
-        if (err) res.send(err)
-
-        if (authenticated) {
-          req.flash('loginMessage', 'Successful login!')
-          res.redirect('users/profile')
-        // res.send('user name found')
-        } else {
-          // res.redirect('/error')
-          // res.send('user name not found')
-          req.flash('loginMessage', 'Password is wrong!')
-          res.redirect('/users')
-        }
-      })
-    } else {
-      req.flash('loginMessage', 'Email not found!')
-      res.redirect('/users')
-    }
-  })
-})
+// router.post('/', function (req, res) {
+//   var user = req.body.user
+//
+//   User.findOne({ 'local.email': user.local.email }, function (err, foundUser) {
+//     if (err) res.send(err.message)
+//
+//     if (foundUser) {
+//       foundUser.authenticate(user.local.password, function (err, authenticated) {
+//         if (err) res.send(err)
+//
+//         if (authenticated) {
+//           req.flash('loginMessage', 'Successful login!')
+//           res.redirect('users/profile')
+//         // res.send('user name found')
+//         } else {
+//           // res.redirect('/error')
+//           // res.send('user name not found')
+//           req.flash('loginMessage', 'Password is wrong!')
+//           res.redirect('/users')
+//         }
+//       })
+//     } else {
+//       req.flash('loginMessage', 'Email not found!')
+//       res.redirect('/users')
+//     }
+//   })
+// })
 
 // router.get('/error', function (req, res) {
 //   res.render('users/error')
 // })
 //
 router.get('/profile', function (req, res) {
-
-  res.render('users/profile', { message: req.flash('signupMessage')
+  res.render('users/profile', { message: req.flash('loginMessage')
   })
 })
 
