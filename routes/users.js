@@ -100,9 +100,11 @@ router.post('/', passport.authenticate('local-login', {
 //   res.render('users/error')
 // })
 //
-router.get('/profile', function (req, res) {
-  res.render('users/profile', { message: req.flash('loginMessage')
-  })
+router.get('/profile', isLoggedIn, function (req, res) {
+  res.render('users/profile', { user: req.user })
+  // res.render({ message: req.flash('loginMessage')
+  // })
+
 })
 
 router.get('/logout', function (req, res) {
@@ -110,4 +112,13 @@ router.get('/logout', function (req, res) {
   res.redirect('/users')
 })
 
+function isLoggedIn (req, res, next) {
+
+  // if user is authenticated in the session, carry on
+  if (req.isAuthenticated())
+    return next()
+
+  // if they aren't redirect them to the home page
+  res.redirect('/users')
+}
 module.exports = router

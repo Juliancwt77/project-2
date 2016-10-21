@@ -53,13 +53,7 @@
           </ul>
 
           <ul>
-            <% if(message.length > 0) { %>
 
-          <div class="alert alert-success col-md-2" id="flash1">
-            <%= message %>
-          </div>
-          <% } %>
-          </ul>
 
         </div>
       </div>
@@ -74,16 +68,19 @@
           </ul>
 
         </div>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<h2> Profile </h2>
 
+<p>
+<ul class="list-group">
+<li class="list-group-item"><strong>Id</strong>: <%= user._id %><br></li>
+<li class="list-group-item"><strong>Name</strong>: <%= user.local.name %><br></li>
+<li class="list-group-item"><strong>Email</strong>: <%= user.local.email %><br></li>
+<li class="list-group-item"><strong>Contact No</strong>: <%= user.local.contact %></li>
+<li class="list-group-item"><strong>Euducation Level</strong>: <%= user.local.education %></li>
+<li class="list-group-item"><strong>No of Years of Working Experience </strong>: <%= user.local.experience %></li>
 
-
-
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-
-
-
-
-          <h2> Profile </h2>
+</p>
 
 
 
@@ -222,7 +219,10 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+    <script src="js/script.js" charset="utf-8"></script>
+
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="../../dist/js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
