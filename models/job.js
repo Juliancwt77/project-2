@@ -1,12 +1,14 @@
 var mongoose = require('mongoose')
 
+var Recruiter = require('../models/recruiter')
+
 var jobSchema = new mongoose.Schema({
   local: {
+    company: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Recruiter'
+    },
 
-    // 'company-name': {
-    //   type: String,
-    //   required: true
-    // },
     //
     // sector: {
     //   type: String,

@@ -62,7 +62,15 @@ router.post('/admin', function (req, res) {
     }
   })
 })
+router.get('/admin/posting', function (req, res) {
+  Job.find({}, function (err, allJobs) {
+    console.log(allJobs)
+    res.render('users/posting', {
+      allJobs: allJobs
 
+    })
+  })
+})
 //
 router.get('/admin', function (req, res) {
   res.render('users/admin', { recruiter: req.user })
