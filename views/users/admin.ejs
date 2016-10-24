@@ -9,7 +9,11 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Recuiter Dashboard</title>
+    <title>Recruiter Dashboard</title>
+
+
+
+
 
     <!-- Bootstrap core CSS -->
     <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
@@ -71,6 +75,18 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <h2>Company Information</h2>
 
+<p>
+
+<ul class="list-group">
+<li class="list-group-item"><strong>Id</strong>: <%= recruiter.id %><br></li>
+<li
+class="list-group-item"><strong>Company Name</strong>: <%= recruiter.local.company %><br></li>
+<li class="list-group-item"><strong>Name</strong>: <%= recruiter.local.name %><br></li>
+<li class="list-group-item"><strong>Email</strong>: <%= recruiter.local.email %><br></li>
+<li class="list-group-item"><strong>Contact No</strong>: <%= recruiter.local.contact %></li>
+<li class="list-group-item"><strong>Sector</strong>: <%= recruiter.local.sector %></li>
+
+</p>
 
 
 
@@ -119,6 +135,7 @@ Submit
 </div>
 </div>
 </form>
+</div>
 </div>
 </div>
 </div>

@@ -4,13 +4,29 @@ var User = require('../models/user')
 var Recruiter = require('../models/recruiter')
 
 module.exports = function (passport) {
+  function isUser (id) {
+    User.findById(id, function (err, foundUser) {
+      if (foundUser) return true
+
+      return false
+    })
+  }
+
   passport.serializeUser(function (user, done) {
+    console.log('serialized user is', user)
     done(null, user.id)
   })
 
   passport.deserializeUser(function (id, done) {
+    console.log('isUser is', isUser(id), id)
     User.findById(id, function (err, user) {
-      done(err, user)
+      if(user) {
+        done(err, user)
+      } else {
+        Recruiter.findById(id, function (err, user) {
+          done(err, user)
+        })
+      }
     })
   })
   // for candidate
@@ -32,7 +48,7 @@ module.exports = function (passport) {
           return next(null, false, req.flash('signupMessage', 'Email has been taken')
           )
         } else {
-          console.log(req.body)
+          // console.log(req.body)
           var newUser = new User({
             local: {
               name: req.body.user.local.name,
@@ -91,7 +107,7 @@ module.exports = function (passport) {
   }, function (req, email, password, next) {
     // the authentication
     process.nextTick(function () {
-      User.findOne({ 'local.email': email }, function (err, founduser) {
+      Recruiter.findOne({ 'local.email': email }, function (err, founduser) {
 
         // if user is found, don't create new user
         // if user is not found, create new user
@@ -101,7 +117,7 @@ module.exports = function (passport) {
           return next(null, false, req.flash('signupMessage', 'Email has been taken')
           )
         } else {
-          console.log(req.body)
+          // console.log(req.body)
           var newRecruiter = new Recruiter({
             local: {
               company: req.body.recruiter.local.company,

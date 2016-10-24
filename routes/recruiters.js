@@ -38,13 +38,18 @@ router.post('/',
 router.get('/login', function (req, res) {
   res.render('users/login', {
     message: req.flash('loginMessage')
-})
+  })
 })
 
+router.post('/login', passport.authenticate('recruiter-login', {
+  successRedirect: '/recruiters/admin',
+  failureRedirect: '/recruiters/login',
+  failureFlash: true
+}))
 
-router.get('/admin', function (req, res) {
-  res.render('users/admin')
-})
+// router.get('/admin', function (req, res) {
+//   res.render('users/admin')
+// })
 
 router.post('/admin', function (req, res) {
   Job.create(req.body.job, function (err, task) {
@@ -57,5 +62,25 @@ router.post('/admin', function (req, res) {
     }
   })
 })
+
+//
+router.get('/admin', function (req, res) {
+  res.render('users/admin', { recruiter: req.user })
+// res.render({ message: req.flash('loginMessage')
+// })
+})
+
+router.get('/logout', function (req, res) {
+  req.logout()
+  res.redirect('/users')
+})
+
+function isLoggedIn (req, res, next) {
+  // if user is authenticated in the session, carry on
+  if (req.isAuthenticated())
+    return next()
+  // if they aren't redirect them to the home page
+  res.redirect('/users')
+}
 
 module.exports = router
