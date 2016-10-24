@@ -1,7 +1,7 @@
 var express = require('express')
 var router = express.Router()
 
-var Company = require('../models/company')
+var Company = require('../models/recruiter')
 
 router.get('/', function (req, res) {
   User.find({}, function (err, allUsers) {

@@ -1,30 +1,36 @@
 var mongoose = require('mongoose')
 
-var companySchema = new mongoose.Schema({
-  'company-name': {
+var recruiterSchema = new mongoose.Schema({
+  local: {
+
+    'company-name': {
     type: String,
     required: true
   },
 
-  'person-in-charge': {
+  name: {
     type: String,
     required: true
   },
-  'company-email': {
+  email: {
     type: String,
     required: true
   },
-  'conmpany-contact-no': {
+  contact: {
     type: Number,
     required: true
   },
   sector: {
     type: String,
     required: true
+  },
+  password: {
+    type: String,
+    required: true
   }
-
+}
 })
 
-var Company = mongoose.model('Company', companySchema)
+var Recruiter = mongoose.model('Recruiter', recruiterSchema)
 
-module.exports = Company
+module.exports = Recruiter

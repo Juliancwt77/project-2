@@ -33,12 +33,12 @@ router.get('/signup', authCheck, function (req, res) {
   })
 })
 
-router.get('/adminlogin', function (req, res) {
-  res.render('users/adminlogin')
+router.get('/recruiter', function (req, res) {
+  res.render('users/recruiter')
 })
 
-router.get('/admin', function (req, res) {
-  res.render('users/admin')
+router.get('/login', function (req, res) {
+  res.render('users/login')
 })
 
 router.post('/signup',

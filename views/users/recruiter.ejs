@@ -9,7 +9,9 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Admin Page</title>
+
+
+    <title>Sign in Page</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
@@ -33,23 +35,51 @@
 
   <body>
 
+
     <div class="container">
       <div class="col-sm-6 col-sm-offset-3">
 
-      <form class="form-signin" action="/users/admin" method="post">
-        <h2 class="form-signin-heading">Login here</h2>
+      <form class="form-signin" action="/users/recruiter" method="post">
+        <h2 class="form-signin-heading">Recruiter Sign up</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" name="admin[adminemail]" placeholder="Email address" required autofocus>
+        <input type="email" id="inputEmail" class="form-control" name="recruiter[local][email]" placeholder="Company Email Address" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" name="admin[adminpassword]" placeholder="Password" required>
+        <input type="password" id="inputPassword" class="form-control" name="recruiter[local][password]" placeholder="Password" required>
+        <br>
+        <h2 class="form-signin-heading">Please provide your company particulars</h2>
 
-        </div>
+        <label for="inputName" class="sr-only">Company Name</label>
+        <input type="text" id="inputcompanyname" class="form-control" name="recruiter[local][company-name]" placeholder="Company Name" required>
 
+        <label for="inputEducation" class="sr-only">Name</label>
+        <input type="text" id="inputname" class="form-control" name="recruiter[local][name]" placeholder="Name" required>
 
+        <label for="inputContact" class="sr-only">Contact Number</label>
+        <input type="number" id="inputContact" class="form-control" name="recruiter[local][contact]" placeholder="Contact Number" required>
+
+        <label for="inputSector" class="sr-only">Sector</label>
+        <input type="text" id="inputSector" class="form-control" name="recruiter[local][sector]" placeholder="Sector" required>
+
+    </div>
+
+        <div>
         <div class="col-sm-6 col-sm-offset-3">
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
       </div>
       </form>
+
+
+
+
+    </div>
+    <br>
+    <div class="container">
+      <div class="col-sm-6 col-sm-offset-3">
+      <p>Already have an account? <a href="/users/login">Login</a> or Back to Home page <a href="/users">Home</a></p>
+
+    </div>
+
+    </div>
 
 
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
