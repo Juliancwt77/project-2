@@ -4,6 +4,9 @@ var Recruiter = require('../models/recruiter')
 
 var jobSchema = new mongoose.Schema({
   local: {
+
+    tags: { type: [String], index: true },
+
     company: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Recruiter'
@@ -31,6 +34,8 @@ var jobSchema = new mongoose.Schema({
     }
   }
 })
+
+jobSchema.index({ name: 1, type: -1 });
 
 var Job = mongoose.model('Job', jobSchema)
 
