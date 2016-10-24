@@ -48,9 +48,11 @@ app.use(express.static(__dirname + '/public'))
 
 var frontendRoutes = require('./routes/users')
 var ajaxRoutes = require('./routes/users_api')
+var recruiterRoutes = require('./routes/recruiters')
 
 app.use('/users', frontendRoutes) // only render ejs files
 app.use('/api/users', ajaxRoutes) // only handle ajax request
+app.use('/recruiters', recruiterRoutes)
 
 app.listen(process.env.PORT || 3000)
 

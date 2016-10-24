@@ -1,28 +1,33 @@
 var mongoose = require('mongoose')
 
 var jobSchema = new mongoose.Schema({
-  'company-name': {
-    type: String,
-    required: true
-  },
+  local: {'company-name': {
+      type: String,
+      required: true
+    },
 
-  'job-title': {
-    type: String,
-    required: true
-  },
+    sector: {
+      type: String,
+      required: true
+    },
 
-  sector: {
-    type: String,
-    required: true
-  },
+    title: {
+      type: String,
+      required: true
+    },
 
-  salary: {
-    type: Number,
-    required: true
+    salary: {
+      type: Number,
+      required: true
+    },
+
+    description: {
+      type: String,
+      required: true
+    }
   }
-
 })
 
-var Job = mongoose.model('Job', companySchema)
+var Job = mongoose.model('Job', jobSchema)
 
 module.exports = Job
