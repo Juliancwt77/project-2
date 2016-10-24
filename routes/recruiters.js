@@ -13,13 +13,34 @@ var Recruiter = require('../models/recruiter')
 //   })
 // })
 
-router.get('/', function (req, res) {
-  res.render('users/recruiter')
+function authCheck (req, res, next) {
+  if (req.isAuthenticated()) {
+    req.flash('signupMessage', 'You have signed up')
+    return res.redirect('/recruiters/admin')
+  } else {
+    return next()
+  }
+}
+
+router.get('/', authCheck, function (req, res) {
+  res.render('users/recruiter', { message: req.flash('signupMessage')
+  })
 })
 
+router.post('/',
+  passport.authenticate('recruiter-signup', {
+    successRedirect: '/recruiters/admin',
+    failureRedirect: '/recruiters',
+    failureFlash: true
+
+  }))
+
 router.get('/login', function (req, res) {
-  res.render('users/login')
+  res.render('users/login', {
+    message: req.flash('loginMessage')
 })
+})
+
 
 router.get('/admin', function (req, res) {
   res.render('users/admin')

@@ -2,7 +2,7 @@ var mongoose = require('mongoose')
 
 var recruiterSchema = new mongoose.Schema({
   local: {
-    'company-name': {
+    company: {
       type: String,
       required: true
     },

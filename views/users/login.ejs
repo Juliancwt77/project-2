@@ -35,6 +35,14 @@
 
   <body>
 
+    <% if(message.length > 0) { %>
+
+  <div class="alert alert-danger">
+    <%= message %>
+  </div>
+<% } %>
+
+
 
     <div class="container">
       <div class="col-sm-6 col-sm-offset-3">
