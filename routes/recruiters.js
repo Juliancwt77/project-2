@@ -12,17 +12,6 @@ var Recruiter = require('../models/recruiter')
 //     })
 //   })
 // })
-router.get('/signup', function (req, res) {
-  res.render('users/signup')
-})
-
-// router.post('/', function (req, res) {
-//   // res.json(req.body)
-//   User.create(req.body.user, function (err, savedUser) {
-//     console.log('new user created')
-//     res.json(savedUser)
-//   })
-// })
 
 router.get('/', function (req, res) {
   res.render('users/recruiter')
@@ -34,6 +23,18 @@ router.get('/login', function (req, res) {
 
 router.get('/admin', function (req, res) {
   res.render('users/admin')
+})
+
+router.post('/admin', function (req, res) {
+  Job.create(req.body.job, function (err, task) {
+    if (err) {
+      res.send('an err during creation' + err)
+    } else {
+      // res.redirect('/profile')
+      res.send('successful')
+    // res.redirect('/')
+    }
+  })
 })
 
 module.exports = router

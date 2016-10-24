@@ -1,15 +1,17 @@
 var mongoose = require('mongoose')
 
 var jobSchema = new mongoose.Schema({
-  local: {'company-name': {
-      type: String,
-      required: true
-    },
+  local: {
 
-    sector: {
-      type: String,
-      required: true
-    },
+    // 'company-name': {
+    //   type: String,
+    //   required: true
+    // },
+    //
+    // sector: {
+    //   type: String,
+    //   required: true
+    // },
 
     title: {
       type: String,
