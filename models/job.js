@@ -13,12 +13,6 @@ var jobSchema = new mongoose.Schema({
       ref: 'Recruiter'
     },
 
-    //
-    // sector: {
-    //   type: String,
-    //   required: true
-    // },
-
     title: {
       type: String,
       required: true
@@ -32,7 +26,17 @@ var jobSchema = new mongoose.Schema({
     description: {
       type: String,
       required: true
-    }
+    },
+    created: {
+           type: Date,
+           default: Date.now
+       },
+    updated: {
+           type: Date,
+           default: Date.now
+
+  }
+
   }
 })
 

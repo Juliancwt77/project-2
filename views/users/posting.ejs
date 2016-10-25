@@ -86,6 +86,7 @@
     <thead>
       <tr>
         <th>#</th>
+        <th>Date Posted</th>
         <th>Job Title</th>
         <th>Salary</th>
         <th>Description</th>
@@ -96,6 +97,7 @@
       <% allJobs.forEach(function(job) { %>
       <tr>
         <td><%= job.local.tag %></td>
+        <td><%= job.local.created %></td>
         <td><%= job.local.title %></td>
         <td><%= job.local.salary%></td>
         <td><%= job.local.description%></td>
