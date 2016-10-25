@@ -114,7 +114,7 @@ router.get('/users/profile', isLoggedIn, function (req, res) {
 router.get('/users/profile/listing', isLoggedIn, function (req, res) {
   // res.render({ message: req.flash('loginMessage')
   Job.find()
-    .populate('local.recruiter', 'local.company')
+    .populate('local.recruiter')
     .exec(function (err, allListing) {
       if (err) console.error(err)
       // console.log('listings', allListing)
