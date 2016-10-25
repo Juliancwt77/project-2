@@ -7,6 +7,7 @@ var session = require('express-session')
 var passport = require('passport')
 var morgan = require('morgan')
 var MongoStore = require('connect-mongo')(session)
+var methodOverride = require('method-override')
 
 var dotenv = require('dotenv')
 
@@ -50,6 +51,7 @@ var frontendRoutes = require('./routes/users')
 var ajaxRoutes = require('./routes/users_api')
 var recruiterRoutes = require('./routes/recruiters')
 
+app.use(methodOverride('_method'))
 app.use('/', frontendRoutes) // only render ejs files
 app.use('/api/users', ajaxRoutes) // only handle ajax request
 app.use('/', recruiterRoutes)

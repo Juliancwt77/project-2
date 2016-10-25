@@ -4,6 +4,7 @@ var passport = require('passport')
 var Job = require('../models/job')
 var Recruiter = require('../models/recruiter')
 
+
 // router.get('/', function (req, res) {
 //   User.find({}, function (err, allUsers) {
 //     console.log(allUsers)

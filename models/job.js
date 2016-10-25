@@ -1,6 +1,13 @@
 var mongoose = require('mongoose')
 
 var Recruiter = require('../models/recruiter')
+
+var date = require('date-and-time')
+
+var now = new Date()
+
+date.format(now, 'ddd MMM DD YYYY')
+
 // var Recruiter = require('../models/listing')
 
 var jobSchema = new mongoose.Schema({
@@ -28,19 +35,17 @@ var jobSchema = new mongoose.Schema({
       required: true
     },
     created: {
-           type: Date,
-           default: Date.now
-       },
+      type: Date,
+      default: Date.now
+    },
     updated: {
-           type: Date,
-           default: Date.now
+      type: Date,
+      default: Date.now
 
-  }
+    }
 
   }
 })
-
-jobSchema.index({ name: 1, type: -1 });
 
 var Job = mongoose.model('Job', jobSchema)
 
