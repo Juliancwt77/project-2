@@ -26,13 +26,13 @@ function authCheck (req, res, next) {
 //         res.render('users/signup')
 //         message: req.flash('signupMessage')
 //       })
-router.get('/signup', authCheck, function (req, res) {
+router.get('/users/signup', authCheck, function (req, res) {
   res.render('users/signup', { message: req.flash('signupMessage')
 
   })
 })
 
-router.post('/signup',
+router.post('/users/signup',
   passport.authenticate('local-signup', {
     successRedirect: '/users/profile',
     failureRedirect: '/users/signup',
@@ -55,7 +55,7 @@ router.get('/', function (req, res) {
 
 router.post('/', passport.authenticate('local-login', {
   successRedirect: '/users/profile',
-  failureRedirect: '/users',
+  failureRedirect: '/',
   failureFlash: true
 }))
 
@@ -91,16 +91,16 @@ router.post('/', passport.authenticate('local-login', {
 //   res.render('users/error')
 // })
 //
-router.get('/profile', isLoggedIn, function (req, res) {
+router.get('/users/profile', isLoggedIn, function (req, res) {
   res.render('users/profile', { user: req.user })
   // res.render({ message: req.flash('loginMessage')
   // })
 
 })
 
-router.get('/logout', function (req, res) {
+router.get('/users/logout', function (req, res) {
   req.logout()
-  res.redirect('/users')
+  res.redirect('/')
 })
 
 function isLoggedIn (req, res, next) {
@@ -110,6 +110,6 @@ function isLoggedIn (req, res, next) {
     return next()
 
   // if they aren't redirect them to the home page
-  res.redirect('/users')
+  res.redirect('/')
 }
 module.exports = router

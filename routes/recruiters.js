@@ -22,12 +22,12 @@ function authCheck (req, res, next) {
   }
 }
 
-router.get('/', authCheck, function (req, res) {
+router.get('/recruiters', authCheck, function (req, res) {
   res.render('users/recruiter', { message: req.flash('signupMessage')
   })
 })
 
-router.post('/',
+router.post('/recruiters',
   passport.authenticate('recruiter-signup', {
     successRedirect: '/recruiters/admin',
     failureRedirect: '/recruiters',
@@ -35,13 +35,13 @@ router.post('/',
 
   }))
 
-router.get('/login', function (req, res) {
+router.get('/recruiters/login', function (req, res) {
   res.render('users/login', {
     message: req.flash('loginMessage')
   })
 })
 
-router.post('/login', passport.authenticate('recruiter-login', {
+router.post('/recruiters/login', passport.authenticate('recruiter-login', {
   successRedirect: '/recruiters/admin',
   failureRedirect: '/recruiters/login',
   failureFlash: true
@@ -51,7 +51,7 @@ router.post('/login', passport.authenticate('recruiter-login', {
 //   res.render('users/admin')
 // })
 
-router.post('/admin', function (req, res) {
+router.post('/recruiters/admin', function (req, res) {
   Job.create(req.body.job, function (err, task) {
     if (err) {
       res.send('an err during creation' + err)
@@ -62,7 +62,7 @@ router.post('/admin', function (req, res) {
     }
   })
 })
-router.get('/admin/posting', function (req, res) {
+router.get('/recruiters/admin/posting', function (req, res) {
   Job.find({}, function (err, allJobs) {
     console.log(allJobs)
     res.render('users/posting', {
@@ -72,7 +72,7 @@ router.get('/admin/posting', function (req, res) {
   })
 })
 //
-router.get('/admin', function (req, res) {
+router.get('/recruiters/admin', function (req, res) {
   res.render('users/admin', { recruiter: req.user })
 // res.render({ message: req.flash('loginMessage')
 // })

@@ -4,21 +4,14 @@ var User = require('../models/user')
 var Recruiter = require('../models/recruiter')
 
 module.exports = function (passport) {
-  function isUser (id) {
-    User.findById(id, function (err, foundUser) {
-      if (foundUser) return true
-
-      return false
-    })
-  }
-
   passport.serializeUser(function (user, done) {
     console.log('serialized user is', user)
     done(null, user.id)
   })
 
   passport.deserializeUser(function (id, done) {
-    console.log('isUser is', isUser(id), id)
+    
+
     User.findById(id, function (err, user) {
       if(user) {
         done(err, user)
