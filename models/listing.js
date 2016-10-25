@@ -8,16 +8,21 @@ var listingSchema = new mongoose.Schema({
 
     // tags: { type: [String], index: true },
 
-    company: {
+    job_id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Job'
     },
 
-    //
-    // sector: {
-    //   type: String,
-    //   required: true
-    // },
+
+    company: {
+      type: String,
+      required: true
+    },
+
+    sector: {
+      type: String,
+      required: true
+    },
 
     title: {
       type: String,

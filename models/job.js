@@ -1,7 +1,7 @@
 var mongoose = require('mongoose')
 
 var Recruiter = require('../models/recruiter')
-var Recruiter = require('../models/listing')
+// var Recruiter = require('../models/listing')
 
 var jobSchema = new mongoose.Schema({
   local: {

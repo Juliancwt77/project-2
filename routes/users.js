@@ -3,6 +3,7 @@ var router = express.Router()
 var passport = require('passport')
 var User = require('../models/user')
 var Listing = require('../models/listing')
+var Job = require('../models/job')
 
 function authCheck (req, res, next) {
   if (req.isAuthenticated()) {
@@ -99,15 +100,29 @@ router.get('/users/profile', isLoggedIn, function (req, res) {
 
 })
 
+// router.get('/users/profile/listing', isLoggedIn, function (req, res) {
+//   // res.render({ message: req.flash('loginMessage')
+//   Job.find({ recruiter: req.params.id }, function (err, allListing) {
+//     //   console.log(allJobs)
+//     res.render('users/listing', {
+//       allListing: allListing
+//
+//     })
+//   })
+// })
+
 router.get('/users/profile/listing', isLoggedIn, function (req, res) {
   // res.render({ message: req.flash('loginMessage')
-  Listing.find({}, function (err, allListing) {
-    //   console.log(allJobs)
-    res.render('users/listing', {
-      allListing: allListing
+  Job.find()
+    .populate('local.recruiter', 'local.company')
+    .exec(function (err, allListing) {
+      if (err) console.error(err)
+      // console.log('listings', allListing)
+      res.render('users/listing', {
+        allListing: allListing
 
+      })
     })
-  })
 })
 
 router.get('/users/logout', function (req, res) {

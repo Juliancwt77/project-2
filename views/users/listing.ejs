@@ -95,14 +95,14 @@
       </tr>
     </thead>
     <tbody>
-      <% allListing.forEach(function(listing) { %>
+      <% allListing.forEach(function(job) { %>
       <tr>
-        <td><%= listing.local.tag %></td>
-        <td><%= listing.local.company %></td>
-        <td><%= listing.local.sector %></td>
-        <td><%= listing.local.title %></td>
-        <td><%= listing.local.salary%></td>
-        <td><%= listing.local.description%></td>
+        <td><%= job.local.tag %></td>
+        <td><%= job.local.recruiter.local.company %></td>
+        <td><%= job.local.sector %></td>
+        <td><%= job.local.title %></td>
+        <td><%= job.local.salary%></td>
+        <td><%= job.local.description%></td>
       </tr>
       <% }) %>
     </tbody>
