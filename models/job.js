@@ -5,7 +5,7 @@ var Recruiter = require('../models/recruiter')
 var jobSchema = new mongoose.Schema({
   local: {
 
-    tags: { type: [String], index: true },
+    // tags: { type: [String], index: true },
 
     company: {
       type: mongoose.Schema.Types.ObjectId,

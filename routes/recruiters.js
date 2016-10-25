@@ -56,8 +56,8 @@ router.post('/recruiters/admin', function (req, res) {
     if (err) {
       res.send('an err during creation' + err)
     } else {
-      // res.redirect('/profile')
-      res.send('successful')
+      res.redirect('/users/posting')
+      // res.send('successful')
     // res.redirect('/')
     }
   })
@@ -80,7 +80,7 @@ router.get('/recruiters/admin', function (req, res) {
 
 router.get('/logout', function (req, res) {
   req.logout()
-  res.redirect('/users')
+  res.redirect('/')
 })
 
 function isLoggedIn (req, res, next) {
@@ -88,7 +88,7 @@ function isLoggedIn (req, res, next) {
   if (req.isAuthenticated())
     return next()
   // if they aren't redirect them to the home page
-  res.redirect('/users')
+  res.redirect('/')
 }
 
 module.exports = router
