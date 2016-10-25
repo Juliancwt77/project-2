@@ -53,18 +53,21 @@ router.post('/recruiters/login', passport.authenticate('recruiter-login', {
 
 router.post('/recruiters/admin', function (req, res) {
   Job.create(req.body.job, function (err, task) {
+
     if (err) {
       res.send('an err during creation' + err)
     } else {
-      res.redirect('/users/posting')
-      // res.send('successful')
+      // res.redirect('/users/posting')
+      res.send('successful')
     // res.redirect('/')
     }
   })
 })
 router.get('/recruiters/admin/posting', function (req, res) {
-  Job.find({}, function (err, allJobs) {
-    console.log(allJobs)
+
+  console.log(res.user)
+  Job.find({ 'local.company': req.user }, function (err, allJobs) {
+    //   console.log(allJobs)
     res.render('users/posting', {
       allJobs: allJobs
 
