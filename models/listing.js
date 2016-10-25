@@ -10,7 +10,7 @@ var listingSchema = new mongoose.Schema({
 
     company: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Recruiter'
+      ref: 'Job'
     },
 
     //

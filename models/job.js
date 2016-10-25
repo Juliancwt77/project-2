@@ -8,7 +8,7 @@ var jobSchema = new mongoose.Schema({
 
     // tags: { type: [String], index: true },
 
-    company: {
+    recruiter: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Recruiter'
     },

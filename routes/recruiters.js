@@ -63,7 +63,7 @@ router.post('/recruiters/admin', function (req, res) {
   })
 })
 router.get('/recruiters/admin/posting', isLoggedIn, function (req, res) {
-  Job.find({ 'local.company': req.user }, function (err, allJobs) {
+  Job.find({ 'local.recruiter': req.user }, function (err, allJobs) {
     //   console.log(allJobs)
     res.render('users/posting', {
       allJobs: allJobs
