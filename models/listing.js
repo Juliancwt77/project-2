@@ -1,9 +1,9 @@
 var mongoose = require('mongoose')
 
 var Recruiter = require('../models/recruiter')
-var Recruiter = require('../models/listing')
+var Recruiter = require('../models/job')
 
-var jobSchema = new mongoose.Schema({
+var listingSchema = new mongoose.Schema({
   local: {
 
     // tags: { type: [String], index: true },
@@ -36,8 +36,6 @@ var jobSchema = new mongoose.Schema({
   }
 })
 
-jobSchema.index({ name: 1, type: -1 });
+var Listing = mongoose.model('Listing', listingSchema)
 
-var Job = mongoose.model('Job', jobSchema)
-
-module.exports = Job
+module.exports = Listing

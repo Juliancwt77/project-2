@@ -2,6 +2,7 @@ var express = require('express')
 var router = express.Router()
 var passport = require('passport')
 var User = require('../models/user')
+var Listing = require('../models/listing')
 
 function authCheck (req, res, next) {
   if (req.isAuthenticated()) {
@@ -96,6 +97,17 @@ router.get('/users/profile', isLoggedIn, function (req, res) {
   // res.render({ message: req.flash('loginMessage')
   // })
 
+})
+
+router.get('/users/profile/listing', isLoggedIn, function (req, res) {
+  // res.render({ message: req.flash('loginMessage')
+  Listing.find({}, function (err, allListing) {
+    //   console.log(allJobs)
+    res.render('users/listing', {
+      allListing: allListing
+
+    })
+  })
 })
 
 router.get('/users/logout', function (req, res) {

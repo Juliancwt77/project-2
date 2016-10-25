@@ -9,7 +9,11 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Dashboard</title>
+    <title>Job Listing</title>
+
+
+
+
 
     <!-- Bootstrap core CSS -->
     <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
@@ -63,30 +67,48 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="users/profile">Overview <span class="sr-only">(current)</span></a></li>
-            <li class="active"><a href="/users/profile/listing">Listing <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="/users/profile">Main<span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="/users/profile/listing">Job Listings <span class="sr-only">(current)</span></a></li>
           </ul>
 
         </div>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-<h2> Profile </h2>
-
-<p>
-<ul class="list-group">
-<li class="list-group-item"><strong>Id</strong>: <%= user._id %><br></li>
-<li class="list-group-item"><strong>Name</strong>: <%= user.local.name %><br></li>
-<li class="list-group-item"><strong>Email</strong>: <%= user.local.email %><br></li>
-<li class="list-group-item"><strong>Contact No</strong>: <%= user.local.contact %></li>
-<li class="list-group-item"><strong>Euducation Level</strong>: <%= user.local.education %></li>
-<li class="list-group-item"><strong>No of Years of Working Experience </strong>: <%= user.local.experience %></li>
-
-</p>
 
 
 
-        </div>
-      </div>
-    </div>
+
+
+
+
+<h2 class="sub-header">Job Listings</h2>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Company Name</th>
+        <th>Sector</th>
+        <th>Job Title</th>
+        <th>Salary</th>
+        <th>Description</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <% allListing.forEach(function(listing) { %>
+      <tr>
+        <td><%= listing.local.tag %></td>
+        <td><%= listing.local.company %></td>
+        <td><%= listing.local.sector %></td>
+        <td><%= listing.local.title %></td>
+        <td><%= listing.local.salary%></td>
+        <td><%= listing.local.description%></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

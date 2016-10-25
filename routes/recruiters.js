@@ -53,7 +53,6 @@ router.post('/recruiters/login', passport.authenticate('recruiter-login', {
 
 router.post('/recruiters/admin', function (req, res) {
   Job.create(req.body.job, function (err, task) {
-
     if (err) {
       res.send('an err during creation' + err)
     } else {
@@ -63,9 +62,7 @@ router.post('/recruiters/admin', function (req, res) {
     }
   })
 })
-router.get('/recruiters/admin/posting', function (req, res) {
-
-  console.log(res.user)
+router.get('/recruiters/admin/posting', isLoggedIn, function (req, res) {
   Job.find({ 'local.company': req.user }, function (err, allJobs) {
     //   console.log(allJobs)
     res.render('users/posting', {
