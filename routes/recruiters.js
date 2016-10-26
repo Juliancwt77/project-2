@@ -81,15 +81,17 @@ router.get('/recruiters/posting', isLoggedIn, function (req, res) {
 })
 
 router.get('/recruiters/posting/:id/edit', isLoggedIn, function (req, res) {
-  Job.find({ 'local.recruiter': req.user }, function (err, oneJob) {
-    if (err) {
-      //   console.log(allJobs)
-      res.render('users/edit')
-    } else {
-      oneJob.title = req.body.job.local.title
-    }
+  Job.findById(req.params.id , function (err, allJobs) {
+    //   console.log(allJobs)
+    res.render('users/edit', {
+      allJobs: allJobs
+
+    })
   })
 })
+
+
+
 
 router.delete('/recruiters/admin/posting/:id/', function (req, res) {
   Job.findByIdAndRemove({ 'local.recruiter': req.user }, function (err, allJobs) {
