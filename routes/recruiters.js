@@ -92,34 +92,26 @@ router.get('/recruiters/posting/:id/edit', isLoggedIn, function (req, res) {
 
 router.post('/recruiters/posting/:id/edit', isLoggedIn, function (req, res) {
   Job.findById(req.params.id , function (err, oneJob) {
-
     if (err) {
-        res.render ('users/edit')
-      }
-      else {
-
-        oneJob.local.title = req.body.job.local.title,
-        oneJob.local.salary = req.body.job.local.salary
-        oneJob.local.description = req.body.job.local.description
-        oneJob.save (function (err, newerJob) {
-          res.redirect ('/recruiters/posting')
+      res.render('users/edit')
+    }else {
+      oneJob.local.title = req.body.job.local.title,
+      oneJob.local.salary = req.body.job.local.salary
+      oneJob.local.description = req.body.job.local.description
+      oneJob.save(function (err, newerJob) {
+        res.redirect('/recruiters/posting')
       })
     }
-    })
-   })
+  })
+})
 
-
-
-
-router.delete('/recruiters/admin/posting/:id/', function (req, res) {
-  Job.findByIdAndRemove({ 'local.recruiter': req.user }, function (err, allJobs) {
+router.delete('/recruiters/posting/:id', function (req, res) {
+  Job.findByIdAndRemove(req.params.id, function (err, allJobs) {
     if (err) {
       console.log(err)
-      res.render('users/posting', {
-        allJobs: allJobs
-      })
+      res.render('users/posting')
     } else {
-      res.redirect('/users/admin/posting')
+      res.redirect('/recruiters/posting')
     }
   })
 })

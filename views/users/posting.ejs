@@ -91,6 +91,7 @@
         <th>Salary</th>
         <th>Description</th>
         <th></th>
+        <th></th>
 
       </tr>
     </thead>
@@ -107,9 +108,12 @@
         <td><%= job.local.salary%></td>
         <td><%= job.local.description%></td>
         <td><a class="btn btn-warning btn-sm" href="/recruiters/posting/<%=job.id%>/edit" role="button">Edit</a></td>
+        <td><form method="post" action="/recruiters/posting/<%=job.id%>?_method=DELETE">
+        <button class="btn btn-danger btn-sm " name="submit" type="submit">
+        Delete
+        </button>
 
-      
-
+        </form>
         </tr>
 
       <% }) %>
