@@ -18,8 +18,21 @@ $(document).ready(function ($) {
   //   $('#all-user-list').append('<li>' + data.local.name + '<br>' + data.local.email + '<br>' + data.local.password + '</li>')
   // }
 
+  // var button = document.getElementById('show_button')
+  //    button.addEventListener('click',hideshow,false);
+  //
+  //    function hideshow() {
+  //        document.getElementById('hidden-div').style.display = 'block';
+  //        this.style.display = 'none'
+  //    }
 
 
+     $(function(){
+           $('.show_button').click(function() {
+               $(this).hide();
+               Alert('Successfully applied')
+           });
+       });
 
 
 })
