@@ -79,7 +79,6 @@
 
 
 
-
 <h2 class="sub-header">Job Listings</h2>
 <div class="table-responsive">
   <table class="table table-striped">
@@ -110,7 +109,7 @@
           <td><form method="post" action="/users/profile/listing">
           <input type="hidden" name="jobid" value="<%= job.id %>">
 
-          <button class="btn btn-primary btn-sm" href="" button type="submit">Apply</button></form></td>
+          <button id="applybtn" class="btn btn-primary btn-sm" href="" button type="submit">Apply</button></form></td>
         </tr>
         <% }) %>
 

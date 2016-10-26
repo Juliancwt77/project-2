@@ -86,25 +86,24 @@ router.get('/users/profile/listing', isLoggedIn, function (req, res) {
     .exec(function (err, allListing) {
       if (err) console.error(err)
       // console.log('listings', allListing)
-      res.render('users/listing', {
-        allListing: allListing
+      res.render('users/listing', { allListing: allListing }
 
-      })
+
+      )
     })
 })
 
 router.post('/users/profile/listing', isLoggedIn, function (req, res) {
   User.findOneAndUpdate(
-    {id: req.user },
+    {_id: req.user },
 
-    {$push: {jobsapplied: req.body.jobid }},
-    {safe: true, upsert: true},
+    {$push: { 'local.jobsapplied': req.body.jobid }},
+    {safe: true, upsert: true, new: true},
     function (err, model) {
-      if (err) console.log("ERROR", err)
-      res.send('done!')
+      if (err) console.log('ERROR', err)
+      res.redirect('/users/profile/listing')
     })
 })
-
 
 // jobsapplied: [{
 //   type: mongoose.Schema.Types.ObjectId,
