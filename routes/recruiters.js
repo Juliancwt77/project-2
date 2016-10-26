@@ -57,8 +57,8 @@ router.post('/recruiters/admin', function (req, res) {
       res.send('an err during creation' + err)
     } else {
       // res.redirect('/users/posting')
-      res.send('successful')
-    // res.redirect('/')
+      // res.send('successful')
+    res.redirect('/recruiters/posting')
     }
   })
 })
