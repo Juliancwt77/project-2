@@ -90,6 +90,24 @@ router.get('/recruiters/posting/:id/edit', isLoggedIn, function (req, res) {
   })
 })
 
+router.post('/recruiters/posting/:id/edit', isLoggedIn, function (req, res) {
+  Job.findById(req.params.id , function (err, oneJob) {
+
+    if (err) {
+        res.render ('users/edit')
+      }
+      else {
+
+        oneJob.local.title = req.body.job.local.title,
+        oneJob.local.salary = req.body.job.local.salary
+        oneJob.local.description = req.body.job.local.salary
+        oneJob.save (function (err, newerJob) {
+          res.redirect ('/recruiters/posting')
+      })
+    }
+    })
+   })
+
 
 
 
