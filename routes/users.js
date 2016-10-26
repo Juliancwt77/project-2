@@ -96,8 +96,9 @@ router.get('/users/profile/listing', isLoggedIn, function (req, res) {
 router.post('/users/profile/listing', isLoggedIn, function (req, res) {
   User.findOneAndUpdate(
     {id: req.user },
+
     {$push: {jobsapplied: req.body.jobid }},
-    // {safe: true, upsert: true},
+    {safe: true, upsert: true},
     function (err, model) {
       if (err) console.log("ERROR", err)
       res.send('done!')

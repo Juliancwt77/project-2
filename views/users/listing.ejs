@@ -98,20 +98,22 @@
     </thead>
     <tbody>
       <% allListing.forEach(function(job) { %>
-        <form method="post" action="/users/profile/listing">
-        <input type="hidden" name="jobid" value="<%= job.id %>">
-      <tr>
-        <td><%= job.local.tag %></td>
-        <td><%= job.id %></td>
-        <td><%= job.local.recruiter.local.company %></td>
-        <td><%= job.local.recruiter.local.sector %></td>
-        <td><%= job.local.title %></td>
-        <td><%= job.local.salary%></td>
-        <td><%= job.local.description%></td>
-        <td><button class="btn btn-primary btn-sm" href="" button type="submit">Apply</button></td>
-      </tr>
-      <% }) %>
-    </form>
+
+        <tr>
+          <td><%= job.local.tag %></td>
+          <td><%= job.id %></td>
+          <td><%= job.local.recruiter.local.company %></td>
+          <td><%= job.local.recruiter.local.sector %></td>
+          <td><%= job.local.title %></td>
+          <td><%= job.local.salary%></td>
+          <td><%= job.local.description%></td>
+          <td><form method="post" action="/users/profile/listing">
+          <input type="hidden" name="jobid" value="<%= job.id %>">
+
+          <button class="btn btn-primary btn-sm" href="" button type="submit">Apply</button></form></td>
+        </tr>
+        <% }) %>
+
     </tbody>
   </table>
 </div>

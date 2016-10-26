@@ -47,7 +47,7 @@ var jobSchema = new mongoose.Schema({
 
     candidate: [{
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Listing'
+      ref: 'User'
     }]
 
   }
