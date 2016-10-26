@@ -68,7 +68,7 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="/recruiters/admin">Main<span class="sr-only">(current)</span></a></li>
-            <li class="active"><a href="/recruiters/admin/posting">Job Posting <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="/recruiters/posting">Job Posting <span class="sr-only">(current)</span></a></li>
           </ul>
 
         </div>
@@ -95,19 +95,23 @@
       </tr>
     </thead>
     <tbody>
+
+
       <% allJobs.forEach(function(job) { %>
 
-          <form method="POST" action="/admin/posting?_method=DELETE">
+
       <tr>
         <td><%= job.local.tag %></td>
         <td><%= job.local.created %></td>
         <td><%= job.local.title %></td>
         <td><%= job.local.salary%></td>
         <td><%= job.local.description%></td>
-        <td><button class="btn btn-warning btn-sm" href="#" button type="submit">Delete</button></td>
+        <td><a class="btn btn-warning btn-sm" href="/recruiters/posting/<%=job.id%>/edit" role="button">Edit</a></td>
+
+      
 
         </tr>
-        </form>
+
       <% }) %>
     </tbody>
   </table>

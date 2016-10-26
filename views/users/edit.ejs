@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Job Listing</title>
+    <title>Recruiter Dashboard</title>
 
 
 
@@ -67,51 +67,66 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="/users/profile">Main<span class="sr-only">(current)</span></a></li>
-            <li class="active"><a href="/users/profile/listing">Job Listings <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="/recruiters/admin">Main<span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="/recruiters/posting">Job Posting <span class="sr-only">(current)</span></a></li>
           </ul>
 
         </div>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
 
+<h2>Edit Job Information</h2>
 
-
-
-
-
-<h2 class="sub-header">Job Listings</h2>
-<div class="table-responsive">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Company Name</th>
-        <th>Sector</th>
-        <th>Job Title</th>
-        <th>Salary</th>
-        <th>Description</th>
-        <th>Application</th>
-
-      </tr>
-    </thead>
-    <tbody>
-      <% allListing.forEach(function(job) { %>
-        <form method="post" action="/users/profile/listing" >
-      <tr>
-        <td><%= job.local.tag %></td>
-        <td><%= job.local.recruiter.local.company %></td>
-        <td><%= job.local.recruiter.local.sector %></td>
-        <td><%= job.local.title %></td>
-        <td><%= job.local.salary%></td>
-        <td><%= job.local.description%></td>
-        <td><button class="btn btn-primary btn-sm" href="" button type="submit">Apply</button></td>
-      </tr>
-      <% }) %>
-    </tbody>
-  </table>
+<div class="bootstrap-iso">
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-6 col-sm-6 col-xs-12">
+<form method="post" action="/recruiters/admin" >
+<div class="form-group ">
+<label class="control-label requiredField" for="name">
+Job Title
+<span class="asteriskField">
+*
+</span>
+</label>
+<input type="text" id="inputTitle" class="form-control" name="job[local][title]" required><%= job.local.title %>
 </div>
+<div class="form-group ">
+<label class="control-label requiredField" for="number">
+Salary
+<span class="asteriskField">
+*
+</span>
+</label>
+<input type="number" id="inputSalary" class="form-control" name="job[local][salary]" required>
+</div>
+<div class="form-group ">
+<label class="control-label requiredField" for="textarea">
+Job Description
+<span class="asteriskField">
+*
+</span>
+</label>
+<textarea class="form-control" cols="40" id="textarea" name=job[local][description] rows="10"></textarea>
 
+
+</div>
+<div class="form-group">
+<div>
+<button class="btn btn-warning " name="submit" type="submit">
+Edit
+</button>
+<button class="btn btn-danger " name="submit" type="submit">
+Delete
+</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

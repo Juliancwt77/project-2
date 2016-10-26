@@ -1,6 +1,7 @@
 var mongoose = require('mongoose')
 
 var Recruiter = require('../models/recruiter')
+var Listing = require('../models/listing')
 
 var date = require('date-and-time')
 
@@ -42,7 +43,12 @@ var jobSchema = new mongoose.Schema({
       type: Date,
       default: Date.now
 
-    }
+    },
+
+    candidate: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Listing'
+    }]
 
   }
 })

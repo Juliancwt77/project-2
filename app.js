@@ -24,6 +24,8 @@ app.use(bodyParser.urlencoded({
   extended: true
 }))
 
+app.use(methodOverride('_method'))
+
 require('./config/passport')(passport)
 
 app.use(morgan('dev'))
@@ -51,7 +53,7 @@ var frontendRoutes = require('./routes/users')
 var ajaxRoutes = require('./routes/users_api')
 var recruiterRoutes = require('./routes/recruiters')
 
-app.use(methodOverride('_method'))
+
 app.use('/', frontendRoutes) // only render ejs files
 app.use('/api/users', ajaxRoutes) // only handle ajax request
 app.use('/', recruiterRoutes)

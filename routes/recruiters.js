@@ -4,7 +4,6 @@ var passport = require('passport')
 var Job = require('../models/job')
 var Recruiter = require('../models/recruiter')
 
-
 // router.get('/', function (req, res) {
 //   User.find({}, function (err, allUsers) {
 //     console.log(allUsers)
@@ -63,7 +62,15 @@ router.post('/recruiters/admin', function (req, res) {
     }
   })
 })
-router.get('/recruiters/admin/posting', isLoggedIn, function (req, res) {
+
+//
+router.get('/recruiters/admin', function (req, res) {
+  res.render('users/admin', { recruiter: req.user })
+// res.render({ message: req.flash('loginMessage')
+// })
+})
+
+router.get('/recruiters/posting', isLoggedIn, function (req, res) {
   Job.find({ 'local.recruiter': req.user }, function (err, allJobs) {
     //   console.log(allJobs)
     res.render('users/posting', {
@@ -72,11 +79,29 @@ router.get('/recruiters/admin/posting', isLoggedIn, function (req, res) {
     })
   })
 })
-//
-router.get('/recruiters/admin', function (req, res) {
-  res.render('users/admin', { recruiter: req.user })
-// res.render({ message: req.flash('loginMessage')
-// })
+
+router.get('/recruiters/posting/:id/edit', isLoggedIn, function (req, res) {
+  Job.find({ 'local.recruiter': req.user }, function (err, oneJob) {
+    if (err) {
+      //   console.log(allJobs)
+      res.render('users/edit')
+    } else {
+      oneJob.title = req.body.job.local.title
+    }
+  })
+})
+
+router.delete('/recruiters/admin/posting/:id/', function (req, res) {
+  Job.findByIdAndRemove({ 'local.recruiter': req.user }, function (err, allJobs) {
+    if (err) {
+      console.log(err)
+      res.render('users/posting', {
+        allJobs: allJobs
+      })
+    } else {
+      res.redirect('/users/admin/posting')
+    }
+  })
 })
 
 router.get('/logout', function (req, res) {

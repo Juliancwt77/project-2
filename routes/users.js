@@ -125,6 +125,14 @@ router.get('/users/profile/listing', isLoggedIn, function (req, res) {
     })
 })
 
+router.post('/users/profile/listing', isLoggedIn, function (req, res) {
+  Job.local.candidate.push({ '_id': req.user}, function (err, newCandidate) {
+
+    // res.json(newCandidate)
+    Job.save(newCandidate)
+  })
+})
+
 router.get('/users/logout', function (req, res) {
   req.logout()
   res.redirect('/')
