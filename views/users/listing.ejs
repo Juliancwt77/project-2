@@ -86,6 +86,7 @@
     <thead>
       <tr>
         <th>#</th>
+        <th>Job Id</th>
         <th>Company Name</th>
         <th>Sector</th>
         <th>Job Title</th>
@@ -97,9 +98,11 @@
     </thead>
     <tbody>
       <% allListing.forEach(function(job) { %>
-        <form method="post" action="/users/profile/listing" >
+        <form method="post" action="/users/profile/listing">
+        <input type="hidden" name="job" value="<%= job.id %>">
       <tr>
         <td><%= job.local.tag %></td>
+        <td><%= job.id %></td>
         <td><%= job.local.recruiter.local.company %></td>
         <td><%= job.local.recruiter.local.sector %></td>
         <td><%= job.local.title %></td>
@@ -108,9 +111,11 @@
         <td><button class="btn btn-primary btn-sm" href="" button type="submit">Apply</button></td>
       </tr>
       <% }) %>
+    </form>
     </tbody>
   </table>
 </div>
+
 
 
     <!-- Bootstrap core JavaScript

@@ -25,7 +25,12 @@ var userSchema = new mongoose.Schema({
     password: {
       type: String,
       required: true
-    }
+    },
+    jobsapplied: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Job'
+
+    }]
   }
 })
 

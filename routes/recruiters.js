@@ -90,6 +90,8 @@ router.get('/recruiters/posting/:id/edit', isLoggedIn, function (req, res) {
   })
 })
 
+
+
 router.post('/recruiters/posting/:id/edit', isLoggedIn, function (req, res) {
   Job.findById(req.params.id , function (err, oneJob) {
     if (err) {

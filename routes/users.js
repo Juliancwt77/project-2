@@ -61,38 +61,6 @@ router.post('/', passport.authenticate('local-login', {
   failureFlash: true
 }))
 
-// router.post('/', function (req, res) {
-//   var user = req.body.user
-//
-//   User.findOne({ 'local.email': user.local.email }, function (err, foundUser) {
-//     if (err) res.send(err.message)
-//
-//     if (foundUser) {
-//       foundUser.authenticate(user.local.password, function (err, authenticated) {
-//         if (err) res.send(err)
-//
-//         if (authenticated) {
-//           req.flash('loginMessage', 'Successful login!')
-//           res.redirect('users/profile')
-//         // res.send('user name found')
-//         } else {
-//           // res.redirect('/error')
-//           // res.send('user name not found')
-//           req.flash('loginMessage', 'Password is wrong!')
-//           res.redirect('/users')
-//         }
-//       })
-//     } else {
-//       req.flash('loginMessage', 'Email not found!')
-//       res.redirect('/users')
-//     }
-//   })
-// })
-
-// router.get('/error', function (req, res) {
-//   res.render('users/error')
-// })
-//
 router.get('/users/profile', isLoggedIn, function (req, res) {
   res.render('users/profile', { user: req.user })
   // res.render({ message: req.flash('loginMessage')
@@ -126,12 +94,27 @@ router.get('/users/profile/listing', isLoggedIn, function (req, res) {
 })
 
 router.post('/users/profile/listing', isLoggedIn, function (req, res) {
-  Job.local.candidate.push({ '_id': req.user}, function (err, newCandidate) {
+  console.log(req.body.job)
 
-    // res.json(newCandidate)
-    Job.save(newCandidate)
-  })
+  User.findOneAndUpdate(
+    {user: req.user },
+    {$push: {jobsapplied: [req.body.job.id] }},
+    {safe: true, upsert: true},
+    function (err, model) {
+      console.log(err)
+    })
 })
+
+// jobsapplied: [{
+//   type: mongoose.Schema.Types.ObjectId,
+//   ref: 'Job'
+
+//   Job.local.jobsapplied.push({ '_id': req.user}, function (err, newJob) {
+//
+//     // res.json(newCandidate)
+//     Job.save(newJob)
+//   })
+// })
 
 router.get('/users/logout', function (req, res) {
   req.logout()
