@@ -100,7 +100,7 @@ router.post('/recruiters/posting/:id/edit', isLoggedIn, function (req, res) {
 
         oneJob.local.title = req.body.job.local.title,
         oneJob.local.salary = req.body.job.local.salary
-        oneJob.local.description = req.body.job.local.salary
+        oneJob.local.description = req.body.job.local.description
         oneJob.save (function (err, newerJob) {
           res.redirect ('/recruiters/posting')
       })
