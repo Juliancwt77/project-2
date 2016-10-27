@@ -80,14 +80,13 @@ router.get('/users/profile', isLoggedIn, function (req, res) {
 // })
 
 router.get('/users/profile/listing', isLoggedIn, function (req, res) {
-  // res.render({ message: req.flash('loginMessage')
+  // req.flash('applyMessage', 'You have applied for a job')
   Job.find()
     .populate('local.recruiter')
     .exec(function (err, allListing) {
       if (err) console.error(err)
       // console.log('listings', allListing)
       res.render('users/listing', { allListing: allListing }
-
 
       )
     })
@@ -97,24 +96,28 @@ router.post('/users/profile/listing', isLoggedIn, function (req, res) {
   User.findOneAndUpdate(
     {_id: req.user },
 
-    {$push: { 'local.jobsapplied': req.body.jobid }},
+    {$push: { 'local.jobsapplied': req.body.jobid} },
     {safe: true, upsert: true, new: true},
+
+    
+
     function (err, model) {
       if (err) console.log('ERROR', err)
+
       res.redirect('/users/profile/listing')
+
     })
+
+  // Job.findOneAndUpdate(
+  //   (req.id),
+  //
+  //   {$push: { 'local.candidate': req.user} },
+  //   {safe: true, upsert: true, new: true},
+  //   function (err, model) {
+  //     if (err) console.log('ERROR', err)
+  //     res.redirect('/users/profile/listing')
+  //   })
 })
-
-// jobsapplied: [{
-//   type: mongoose.Schema.Types.ObjectId,
-//   ref: 'Job'
-
-//   Job.local.jobsapplied.push({ '_id': req.user}, function (err, newJob) {
-//
-//     // res.json(newCandidate)
-//     Job.save(newJob)
-//   })
-// })
 
 router.get('/users/logout', function (req, res) {
   req.logout()

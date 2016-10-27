@@ -45,12 +45,11 @@ var jobSchema = new mongoose.Schema({
 
     },
 
-    // candidate: [{
-    //
-    //
-    //   // type: mongoose.Schema.Types.ObjectId,
-    //   // ref: 'User'
-    // }]
+    candidate: [{
+
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    }]
 
   }
 })
