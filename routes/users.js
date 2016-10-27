@@ -97,27 +97,30 @@ router.post('/users/profile/listing', isLoggedIn, function (req, res) {
     {_id: req.user },
 
     {$push: { 'local.jobsapplied': req.body.jobid} },
-    {safe: true, upsert: true, new: true},
+    {safe: true, upsert: true, new: true})
 
-    
+  Job.findOneAndUpdate(
+    (req.id),
+
+    {$push: { 'local.candidate': req.user} },
+    {safe: true, upsert: true, new: true},
 
     function (err, model) {
       if (err) console.log('ERROR', err)
 
       res.redirect('/users/profile/listing')
-
     })
-
-  // Job.findOneAndUpdate(
-  //   (req.id),
-  //
-  //   {$push: { 'local.candidate': req.user} },
-  //   {safe: true, upsert: true, new: true},
-  //   function (err, model) {
-  //     if (err) console.log('ERROR', err)
-  //     res.redirect('/users/profile/listing')
-  //   })
 })
+
+// Job.findOneAndUpdate(
+//   (req.id),
+//
+//   {$push: { 'local.candidate': req.user} },
+//   {safe: true, upsert: true, new: true},
+//   function (err, model) {
+//     if (err) console.log('ERROR', err)
+//     res.redirect('/users/profile/listing')
+//   })
 
 router.get('/users/logout', function (req, res) {
   req.logout()
