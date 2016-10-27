@@ -27,12 +27,12 @@ $(document).ready(function ($) {
   //        document.getElementById('hidden-div').style.display = 'block'
   //        this.style.display = 'none'
   //    }
-
-  $show_button.on('click', function () {
-    // $(this).hide()
-
-    bootbox.alert('You have successfully applied for a job. Our consultants will be contacting you shortly')
-    $(this).remove()
-    $btntext.textContent = 'Applied'
-  })
+  // 
+  // $show_button.on('click', function () {
+  //   // $(this).hide()
+  //
+  //   bootbox.alert('You have successfully applied for a job. Our consultants will be contacting you shortly')
+  //   $(this).remove()
+  //
+  // })
 })

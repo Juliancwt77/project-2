@@ -84,7 +84,7 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>#</th>
+        
         <th>Job Id</th>
         <th>Company Name</th>
         <th>Sector</th>
@@ -101,7 +101,7 @@
     <form method="post" action="/users/profile/listing">
     <input type="hidden" name="jobid" value="<%= job.id %>">
     <tr>
-      <td><%= job.local.tag %></td>
+
       <td><%= job.id %></td>
       <td><%= job.local.recruiter.local.company %></td>
       <td><%= job.local.recruiter.local.sector %></td>
@@ -110,7 +110,7 @@
       <td><%= job.local.description%></td>
       <td id="btntext"></td>
       <td >
-      <button id="show_button" class="btn btn-primary btn-sm" href="" button type="submit">Apply</button></td>
+      <button id ="show_button" class="btn btn-primary btn-sm" href="" button type="submit">Apply</button></td>
     </tr>
     </form>
     <% }) %>

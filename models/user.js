@@ -31,11 +31,7 @@ var userSchema = new mongoose.Schema({
 
       type: String
     }
-    // jobsapplied: [{
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: 'Job'
-
-    // }]
+  
   }
 })
 

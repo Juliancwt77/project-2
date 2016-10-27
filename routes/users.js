@@ -110,8 +110,8 @@ router.post('/users/profile/listing', isLoggedIn, function (req, res) {
         function (err, model) {
           // res.send(job)
           if (err) console.log('ERROR', err)
-
-          // res.redirect('/users/profile/listing')
+          
+          res.redirect('/users/profile/listing')
         }
       )
 
