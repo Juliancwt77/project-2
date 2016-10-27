@@ -80,7 +80,7 @@
 
 
 
-<h2 class="sub-header">Job Listings</h2>
+<h2 class="sub-header">Job Applications</h2>
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
@@ -98,12 +98,11 @@
       </tr>
     </thead>
     <tbody>
-      <% allListing.forEach(function(job) { %>
-    <form method="post" action="/users/profile/listing">
-    <input type="hidden" name="jobid" value="<%= job.id %>">
+      <% allListing.forEach(function(user) { %>
+
     <tr>
 
-      <td><%= job.id %></td>
+      <td><%= user.local..local.company %></td>
       <td><%= job.local.recruiter.local.company %></td>
       <td><%= job.local.recruiter.local.sector %></td>
       <td><%= job.local.title %></td>
@@ -111,9 +110,9 @@
       <td><%= job.local.description%></td>
 
       <td >
-      <button id ="show_button" class="btn btn-primary btn-sm" href="" button type="submit">Apply</button></td>
+
     </tr>
-    </form>
+
     <% }) %>
 
     </tbody>

@@ -110,7 +110,7 @@ router.post('/users/profile/listing', isLoggedIn, function (req, res) {
         function (err, model) {
           // res.send(job)
           if (err) console.log('ERROR', err)
-          
+
           res.redirect('/users/profile/listing')
         }
       )
@@ -119,16 +119,22 @@ router.post('/users/profile/listing', isLoggedIn, function (req, res) {
   )
 })
 
-//   {_id: id },
-//
-//   {$push: { 'local.candidate': req.user} },
-//   {safe: true, upsert: true, new: true},
-//
-//   function (err, model) {
-//     if (err) console.log('ERROR', err)
-//
-//     res.redirect('/users/profile/listing')
-//   })
+router.get('/users/profile/application', isLoggedIn, function (req, res) {
+  User.find()
+    .populate('local.jobsapplied')
+    .exec(function (err, allListing) {
+      if (err) console.error(err)
+      // console.log('listings', allListing)
+      res.render('users/application', {
+        allListing: allListing
+
+      }
+
+      )
+    })
+})
+
+
 
 router.get('/users/logout', function (req, res) {
   req.logout()
