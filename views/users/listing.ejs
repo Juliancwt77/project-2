@@ -98,22 +98,22 @@
     </thead>
     <tbody>
       <% allListing.forEach(function(job) { %>
-      <form method="post" action="/users/profile/listing">
-      <input type="hidden" name="jobid" value="<%= job.id %>">
-      <tr>
-        <td><%= job.local.tag %></td>
-        <td><%= job.id %></td>
-        <td><%= job.local.recruiter.local.company %></td>
-        <td><%= job.local.recruiter.local.sector %></td>
-        <td><%= job.local.title %></td>
-        <td><%= job.local.salary%></td>
-        <td><%= job.local.description%></td>
-        <td id="btntext"></td>
-        <td >
-        <button id="show_button" class="btn btn-primary btn-sm" href="" button type="submit">Apply</button></td>
-      </tr>
-      </form>
-      <% }) %>
+    <form method="post" action="/users/profile/listing">
+    <input type="hidden" name="jobid" value="<%= job.id %>">
+    <tr>
+      <td><%= job.local.tag %></td>
+      <td><%= job.id %></td>
+      <td><%= job.local.recruiter.local.company %></td>
+      <td><%= job.local.recruiter.local.sector %></td>
+      <td><%= job.local.title %></td>
+      <td><%= job.local.salary%></td>
+      <td><%= job.local.description%></td>
+      <td id="btntext"></td>
+      <td >
+      <button id="show_button" class="btn btn-primary btn-sm" href="" button type="submit">Apply</button></td>
+    </tr>
+    </form>
+    <% }) %>
 
     </tbody>
   </table>
