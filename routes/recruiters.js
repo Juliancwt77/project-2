@@ -51,7 +51,7 @@ router.post('/recruiters/login', passport.authenticate('recruiter-login', {
 //   res.render('users/admin')
 // })
 
-router.post('/recruiters/admin', function (req, res) {
+router.post('/recruiters/admin', isLoggedIn, function (req, res) {
   Job.create(req.body.job, function (err, task) {
     if (err) {
       res.send('an err during creation' + err)
@@ -64,7 +64,7 @@ router.post('/recruiters/admin', function (req, res) {
 })
 
 //
-router.get('/recruiters/admin', function (req, res) {
+router.get('/recruiters/admin', isLoggedIn, function (req, res) {
   res.render('users/admin', { recruiter: req.user })
 // res.render({ message: req.flash('loginMessage')
 // })
@@ -107,7 +107,7 @@ router.post('/recruiters/posting/:id/edit', isLoggedIn, function (req, res) {
   })
 })
 
-router.delete('/recruiters/posting/:id', function (req, res) {
+router.delete('/recruiters/posting/:id', isLoggedIn, function (req, res) {
   Job.findByIdAndRemove(req.params.id, function (err, allJobs) {
     if (err) {
       console.log(err)

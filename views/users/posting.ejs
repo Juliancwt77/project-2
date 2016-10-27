@@ -108,6 +108,7 @@
         <td><%= job.local.title %></td>
         <td><%= job.local.salary%></td>
         <td><%= job.local.description%></td>
+        <th><%= job.local.candidate.length%></th>
         <td></td>
         <td><a class="btn btn-warning btn-sm" href="/recruiters/posting/<%=job.id%>/edit" role="button">Edit</a></td>
         <td><form method="post" action="/recruiters/posting/<%=job.id%>?_method=DELETE">

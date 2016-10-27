@@ -80,13 +80,15 @@ router.get('/users/profile', isLoggedIn, function (req, res) {
 // })
 
 router.get('/users/profile/listing', isLoggedIn, function (req, res) {
-  // req.flash('applyMessage', 'You have applied for a job')
   Job.find()
     .populate('local.recruiter')
     .exec(function (err, allListing) {
       if (err) console.error(err)
       // console.log('listings', allListing)
-      res.render('users/listing', { allListing: allListing }
+      res.render('users/listing', {
+        allListing: allListing
+
+      }
 
       )
     })
@@ -109,18 +111,10 @@ router.post('/users/profile/listing', isLoggedIn, function (req, res) {
       if (err) console.log('ERROR', err)
 
       res.redirect('/users/profile/listing')
-    })
-})
 
-// Job.findOneAndUpdate(
-//   (req.id),
-//
-//   {$push: { 'local.candidate': req.user} },
-//   {safe: true, upsert: true, new: true},
-//   function (err, model) {
-//     if (err) console.log('ERROR', err)
-//     res.redirect('/users/profile/listing')
-//   })
+    })
+
+})
 
 router.get('/users/logout', function (req, res) {
   req.logout()
