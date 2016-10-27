@@ -120,18 +120,13 @@ router.post('/users/profile/listing', isLoggedIn, function (req, res) {
 })
 
 router.get('/users/profile/application', isLoggedIn, function (req, res) {
-  User.find()
-    .populate('local.jobsapplied')
-    .exec(function (err, allListing) {
-      if (err) console.error(err)
-      // console.log('listings', allListing)
-      res.render('users/application', {
-        allListing: allListing
+  Job.find({ 'local.candidate': req.user.id }, function (err, appJob) {
 
-      }
+    res.render('users/application', {
+      appJob: appJob
 
-      )
     })
+  })
 })
 
 

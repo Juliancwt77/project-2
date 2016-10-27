@@ -98,18 +98,19 @@
       </tr>
     </thead>
     <tbody>
-      <% allListing.forEach(function(user) { %>
-        <input type="hidden" name="userid" value="<%= user.id %>">
+      <% appJob.forEach(function(job) { %>
+        <input type="hidden" name="jobid" value="<%= job.id %>">
+
     <tr>
 
-      <td><%= user.local.jobsapplied.id %></td>
-      <td><%= user.local.jobsapplied.local.company %></td>
-      <td><%= user.local.jobsapplied.local.sector %></td>
-      <td><%= user.local.jobsapplied.local.title %></td>
-      <td><%= user.local.jobsapplied.local.salary%></td>
-      <td><%= user.local.jobsapplied.local.description%></td>
+      <td><%= job.id %></td>
+      <td><%= job.local.recruiter %></td>
+      <td><%= job.local.recruiter %></td>
+      <td><%= job.local.title %></td>
+      <td><%= job.local.salary%></td>
+      <td><%= job.local.description%></td>
 
-      <td >
+
 
     </tr>
 
