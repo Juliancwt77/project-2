@@ -114,7 +114,6 @@ router.post('/users/profile/listing', isLoggedIn, function (req, res) {
           res.redirect('/users/profile/listing')
         }
       )
-
     }
   )
 })
@@ -129,7 +128,20 @@ router.get('/users/profile/application', isLoggedIn, function (req, res) {
   })
 })
 
-
+// router.get('/users/profile/application', isLoggedIn, function (req, res) {
+//   Job.find({ 'local.candiate': req.user.id })
+//     .populate('local.candiate.id')
+//     .exec(function (err, appJob) {
+//       if (err) console.error(err)
+//       // console.log('listings', allListing)
+//       res.render('users/application', {
+//         appJob: appJob
+//
+//       }
+//
+//       )
+//     })
+// })
 
 router.get('/users/logout', function (req, res) {
   req.logout()

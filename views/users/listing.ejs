@@ -69,8 +69,9 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="/users/profile">Main<span class="sr-only">(current)</span></a></li>
+
             <li class="active"><a href="/users/profile/listing">Job Listings <span class="sr-only">(current)</span></a></li>
-            <li class="active"><a href="/users/profile/application">Job Applications <span class="sr-only">(current)</span></a></li>
+              <li class="active"><a href="/users/profile/application">Job Applications <span class="sr-only">(current)</span></a></li>
           </ul>
 
         </div>
@@ -87,8 +88,6 @@
       <tr>
 
         <th>Job Id</th>
-        <th>Company Name</th>
-        <th>Sector</th>
         <th>Job Title</th>
         <th>Salary</th>
         <th>Description</th>
@@ -104,8 +103,6 @@
     <tr>
 
       <td><%= job.id %></td>
-      <td><%= job.local.recruiter.local.company %></td>
-      <td><%= job.local.recruiter.local.sector %></td>
       <td><%= job.local.title %></td>
       <td><%= job.local.salary%></td>
       <td><%= job.local.description%></td>

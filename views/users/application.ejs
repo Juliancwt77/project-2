@@ -69,11 +69,13 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="/users/profile">Main<span class="sr-only">(current)</span></a></li>
+
             <li class="active"><a href="/users/profile/listing">Job Listings <span class="sr-only">(current)</span></a></li>
-            <li class="active"><a href="/users/profile/application">Job Applications <span class="sr-only">(current)</span></a></li>
+              <li class="active"><a href="/users/profile/application">Job Applications <span class="sr-only">(current)</span></a></li>
           </ul>
 
         </div>
+
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
 
@@ -81,31 +83,29 @@
 
 
 <h2 class="sub-header">Job Applications</h2>
+<br>
+<div class="alert alert-success" role="alert"> Thank you for your application. Our consultants will be contacting you shortly</div>
+
+
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
       <tr>
-
         <th>Job Id</th>
-        <th>Company Name</th>
-        <th>Sector</th>
         <th>Job Title</th>
         <th>Salary</th>
         <th>Description</th>
-
-        <th></th>
+      
 
       </tr>
     </thead>
     <tbody>
       <% appJob.forEach(function(job) { %>
-        <input type="hidden" name="jobid" value="<%= job.id %>">
+
 
     <tr>
 
       <td><%= job.id %></td>
-      <td><%= job.local.recruiter %></td>
-      <td><%= job.local.recruiter %></td>
       <td><%= job.local.title %></td>
       <td><%= job.local.salary%></td>
       <td><%= job.local.description%></td>
