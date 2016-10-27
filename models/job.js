@@ -1,7 +1,7 @@
 var mongoose = require('mongoose')
 
 var Recruiter = require('../models/recruiter')
-var Listing = require('../models/listing')
+
 
 var date = require('date-and-time')
 

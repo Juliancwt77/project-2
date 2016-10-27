@@ -1,7 +1,7 @@
 var mongoose = require('mongoose')
 var bcrypt = require('bcrypt')
 var Job = require('../models/job')
-var Recruiter = require('../models/listing')
+
 
 var recruiterSchema = new mongoose.Schema({
   local: {
