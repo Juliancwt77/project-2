@@ -95,26 +95,40 @@ router.get('/users/profile/listing', isLoggedIn, function (req, res) {
 })
 
 router.post('/users/profile/listing', isLoggedIn, function (req, res) {
+  // res.send(req.user)
   User.findOneAndUpdate(
-    {_id: req.user },
-
+    {_id: req.user.id },
     {$push: { 'local.jobsapplied': req.body.jobid} },
-    {safe: true, upsert: true, new: true})
-
-  Job.findOneAndUpdate(
-    (req.id),
-
-    {$push: { 'local.candidate': req.user} },
     {safe: true, upsert: true, new: true},
+    function (err, user) {
+      // res.send(user)
 
-    function (err, model) {
-      if (err) console.log('ERROR', err)
+      Job.findOneAndUpdate(
+        {_id: req.body.jobid },
+        {$push: { 'local.candidate': req.user.id } },
+        {safe: true, upsert: true, new: true},
+        function (err, model) {
+          // res.send(job)
+          if (err) console.log('ERROR', err)
 
-      res.redirect('/users/profile/listing')
+          res.redirect('/users/profile/listing')
+        }
+      )
 
-    })
-
+    }
+  )
 })
+
+//   {_id: id },
+//
+//   {$push: { 'local.candidate': req.user} },
+//   {safe: true, upsert: true, new: true},
+//
+//   function (err, model) {
+//     if (err) console.log('ERROR', err)
+//
+//     res.redirect('/users/profile/listing')
+//   })
 
 router.get('/users/logout', function (req, res) {
   req.logout()

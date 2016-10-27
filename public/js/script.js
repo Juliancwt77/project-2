@@ -26,13 +26,13 @@ $(document).ready(function ($) {
   //        this.style.display = 'none'
   //    }
 
-
-     $(function(){
-           $('.show_button').click(function() {
-               $(this).hide();
-               Alert('Successfully applied')
-           });
-       });
+     // 
+    //  function myfunction(){
+    //        $('.show_button').click(function() {
+    //            $(this).hide();
+    //            Alert('Successfully applied')
+    //        });
+    //    };
 
 
 })
