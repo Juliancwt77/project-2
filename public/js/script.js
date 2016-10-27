@@ -1,4 +1,6 @@
 $(document).ready(function ($) {
+  var $show_button = $('#show_button')
+  var $btntext = $('#btntext')
   // var $userForm = $('.new-user')
   //
   // $userForm.on('submit', function (e) {
@@ -19,20 +21,18 @@ $(document).ready(function ($) {
   // }
 
   // var button = document.getElementById('show_button')
-  //    button.addEventListener('click',hideshow,false);
+  //    button.addEventListener('click',hideshow,false)
   //
   //    function hideshow() {
-  //        document.getElementById('hidden-div').style.display = 'block';
+  //        document.getElementById('hidden-div').style.display = 'block'
   //        this.style.display = 'none'
   //    }
 
-     // 
-    //  function myfunction(){
-    //        $('.show_button').click(function() {
-    //            $(this).hide();
-    //            Alert('Successfully applied')
-    //        });
-    //    };
+  $show_button.on('click', function () {
+    // $(this).hide()
 
-
+    bootbox.alert('You have successfully applied for a job. Our consultants will be contacting you shortly')
+    $(this).remove()
+    $btntext.textContent = 'Applied'
+  })
 })

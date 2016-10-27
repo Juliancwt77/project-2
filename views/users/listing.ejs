@@ -22,6 +22,7 @@
     <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
+    <%# <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">%>
 
     <link rel="stylesheet" href="/css/style.css">
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
@@ -91,6 +92,7 @@
         <th>Salary</th>
         <th>Description</th>
         <th>Application</th>
+        <th></th>
 
       </tr>
     </thead>
@@ -106,7 +108,8 @@
         <td><%= job.local.title %></td>
         <td><%= job.local.salary%></td>
         <td><%= job.local.description%></td>
-        <td>
+        <td id="btntext"></td>
+        <td >
         <button id="show_button" class="btn btn-primary btn-sm" href="" button type="submit">Apply</button></td>
       </tr>
       </form>
@@ -131,5 +134,10 @@
     <script src="../../assets/js/vendor/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+
+    <%# <script src="dist/sweetalert.min.js"></script>%>
+
   </body>
 </html>
